@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from shop import views as viewsshop
 
 from shop import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.crud, name ='home'),
+    path('category/<str:cat>',viewsshop.showcategory,name="showcategory"),
+    path('company/<str:comp>',viewsshop.showcompany,name="showcompany"),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
