@@ -20,10 +20,16 @@ from django.conf.urls.static import static
 from shop import views as viewsshop
 
 from shop import views
+from . import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.crud, name ='home'),
     path('category/<str:cat>',viewsshop.showcategory,name="showcategory"),
     path('company/<str:comp>',viewsshop.showcompany,name="showcompany"),
+    path('product/<str:product_id>',viewsshop.showproduct,name="showproduct"),
+    path('signup/', views.signup, name = "signup"),
+    path('logout/', views.logout_request, name = "logout"),
+    path('login/', views.login_request, name = "login"),
+    path('account/', views.account, name = "account"),
+    path('',viewsshop.crud,name="home"),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
